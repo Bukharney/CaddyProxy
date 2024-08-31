@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  de:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_PRIVATE_KEY }}
+          
+      - name: Upload files to EC2
+        run: |
+          HOST=${{ secrets.EC2_HOST }}
+          USER=${{ secrets.EC2_USER }}
+          PORT=22
+          
+          scp -o StrictHostKeyChecking=no -P $PORT Caddyfile $USER@$HOST:/home/$USER/CaddyProxy/Caddyfile
+          scp -o StrictHostKeyChecking=no -P $PORT docker-compose.yml $USER@$HOST:/home/$USER/CaddyProxy/docker-compose.yml
+
+      - name: Deploy to EC2
+        run: |
+          HOST=${{ secrets.EC2_HOST }}
+          USER=${{ secrets.EC2_USER }}
+          PORT=22
+
+          ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
+            docker-compose -f /home/$USER/CaddyProxy/docker-compose.yml up -d
+          EOF
