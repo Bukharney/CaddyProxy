@@ -17,7 +17,7 @@ modx.bukharney.tech {
 myas.bukharney.tech {
     handle /api/* {
 		uri strip_prefix /api
-        reverse_proxy myasServer:8080
+        reverse_proxy myas_server:8080
     }
-	reverse_proxy myasClient:5173
+	reverse_proxy myas_client:5173
 }
