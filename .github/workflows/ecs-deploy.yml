@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Ecs
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  de:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
