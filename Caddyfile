@@ -19,5 +19,5 @@ myas.bukharney.tech {
 		uri strip_prefix /api
         reverse_proxy myas_server:8080
     }
-	reverse_proxy myas_client:5173
+	reverse_proxy myas_client:4173
 }
