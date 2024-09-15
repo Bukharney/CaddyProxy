@@ -9,9 +9,9 @@ bukchat.bukharney.tech {
 modx.bukharney.tech {
     handle /api/* {
 		uri strip_prefix /api
-        reverse_proxy modxServer:8080
+        reverse_proxy modx_server:8080
     }
-	reverse_proxy modxWeb:5173
+	reverse_proxy modx_web:5173
 }
 
 myas.bukharney.tech {
