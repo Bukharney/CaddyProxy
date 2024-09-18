@@ -14,6 +14,10 @@ modx.bukharney.tech {
 	reverse_proxy modx_web:5173
 }
 
+inu.bukharney.tech {
+	reverse_proxy inu_server:3001
+}
+
 myas.bukharney.tech {
     handle /api/* {
 		uri strip_prefix /api
