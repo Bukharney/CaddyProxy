@@ -1,9 +1,5 @@
-bukchat.bukharney.tech {
-    handle /api/* {
-		uri strip_prefix /api
-        reverse_proxy server:8080
-    }
-	reverse_proxy web:5173
+inu.bukharney.tech {
+	reverse_proxy inu_server:3001
 }
 
 modx.bukharney.tech {
@@ -11,11 +7,7 @@ modx.bukharney.tech {
 		uri strip_prefix /api
         reverse_proxy modx_server:8080
     }
-	reverse_proxy modx_web:5173
-}
-
-inu.bukharney.tech {
-	reverse_proxy inu_server:3001
+	reverse_proxy modx_client:4173
 }
 
 myas.bukharney.tech {
