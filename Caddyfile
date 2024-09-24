@@ -1,5 +1,5 @@
 inu.bukharney.tech {
-    handle /admin {
+    handle /admin/ {
 		uri strip_prefix /admin
         reverse_proxy inu_phpmyadmin:8080
     }
