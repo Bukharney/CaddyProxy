@@ -1,7 +1,7 @@
 inu.bukharney.tech {
-    handle /mysql/* {
+    handle /mysql {
 		uri strip_prefix /mysql
-        reverse_proxy inu-phpmyadmin-1:8080
+        reverse_proxy inu_phpmyadmin:8080
     }
 	reverse_proxy inu_server:3001
 }
