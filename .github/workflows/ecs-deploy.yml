@@ -26,9 +26,9 @@ jobs:
           USER=${{ secrets.ECS_USER }}
           PORT=22
 
-          ssh -o StrictHostKeyChecking=no $USER@$HOST mkdir -p /$USER/caddyProxy
-          scp -o StrictHostKeyChecking=no -P $PORT Caddyfile $USER@$HOST:/$USER/caddyProxy/Caddyfile
-          scp -o StrictHostKeyChecking=no -P $PORT docker-compose.yml $USER@$HOST:/$USER/caddyProxy/docker-compose.yml
+          ssh -o StrictHostKeyChecking=no $USER@$HOST mkdir -p /home/$USER/caddyProxy
+          scp -o StrictHostKeyChecking=no -P $PORT Caddyfile $USER@$HOST:/home/$USER/caddyProxy/Caddyfile
+          scp -o StrictHostKeyChecking=no -P $PORT docker-compose.yml $USER@$HOST:/home/$USER/caddyProxy/docker-compose.yml
 
       - name: Deploy to ECS
         run: |
@@ -37,6 +37,6 @@ jobs:
           PORT=22
 
           ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
-            docker compose -f /$USER/caddyProxy/docker-compose.yml down
-            docker compose -f /$USER/caddyProxy/docker-compose.yml up -d
+            docker compose -f /home/$USER/caddyProxy/docker-compose.yml down
+            docker compose -f /home/$USER/caddyProxy/docker-compose.yml up -d
           EOF
