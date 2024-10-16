@@ -1,6 +1,6 @@
 services:
   caddy:
-    image: caddy:2.7-alpine
+    image: caddy:2.8-alpine
     restart: unless-stopped
     container_name: caddy_proxy
     ports:
