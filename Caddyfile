@@ -1,4 +1,4 @@
-inu.bukharney.tech {
+inu.bukharney.site {
     handle /admin/ {
 		uri strip_prefix /admin
         reverse_proxy inu_phpmyadmin:8080
@@ -6,7 +6,7 @@ inu.bukharney.tech {
 	reverse_proxy inu_server:3001
 }
 
-modx.bukharney.tech {
+modx.bukharney.site {
     handle /api/* {
 		uri strip_prefix /api
         reverse_proxy modx_server:8080
@@ -14,10 +14,18 @@ modx.bukharney.tech {
 	reverse_proxy modx_client:4173
 }
 
-myas.bukharney.tech {
+myas.bukharney.site {
     handle /api/* {
 		uri strip_prefix /api
         reverse_proxy myas_server:8080
     }
 	reverse_proxy myas_client:4173
+}
+
+bukchat.bukharney.site {
+    handle /api/* {
+                uri strip_prefix /api
+        reverse_proxy bukchat_server:8080
+    }
+        reverse_proxy bukchat_client:4173
 }
