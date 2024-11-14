@@ -1,7 +1,7 @@
 inu.bukharney.site {
     handle /admin/* {
 		uri strip_prefix /admin
-        reverse_proxy inu_phpmyadmin:8080
+        reverse_proxy inu_phpmyadmin:80
     }
 	reverse_proxy inu_server:3001
 }
