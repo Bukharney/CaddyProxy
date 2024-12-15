@@ -37,6 +37,6 @@ jobs:
           PORT=22
 
           ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
-            docker compose -f /home/$USER/caddyProxy/docker-compose.yml down
-            docker compose -f /home/$USER/caddyProxy/docker-compose.yml up -d
+            docker-compose -f /home/$USER/caddyProxy/docker-compose.yml down
+            docker-compose -f /home/$USER/caddyProxy/docker-compose.yml up -d
           EOF
